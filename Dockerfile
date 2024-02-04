@@ -14,7 +14,7 @@ COPY --link go.sum .
 RUN go mod download
 
 # Copy the application source
-COPY --link . .
+COPY --link ./cmd/operator/main.go ./main.go
 
 # Build the application
 RUN CGO_ENABLED=0 go build -o main .
