@@ -26,4 +26,4 @@ FROM gcr.io/distroless/static-debian12:nonroot
 COPY --link --chown=65532:65532 --from=builder /app/main /
 
 # Execute the application command
-CMD ["./main"]
+CMD ["/main"]
