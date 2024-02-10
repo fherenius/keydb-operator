@@ -23,7 +23,7 @@ RUN CGO_ENABLED=0 go build -o main .
 FROM gcr.io/distroless/static-debian12:nonroot
 
 # Copy the built binary
-COPY --link --from=builder /app/main /
+COPY --link --chown=65532:65532 --from=builder /app/main /
 
 # Execute the application command
 CMD ["./main"]
