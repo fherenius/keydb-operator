@@ -2,6 +2,12 @@ variable "COMMIT_SHA" {
   default = "$COMMIT_SHA"
 }
 
+group "default" {
+  targets = [
+    "operator"
+  ]
+}
+
 target "operator" {
   dockerfile = "Dockerfile"
   tags       = [
