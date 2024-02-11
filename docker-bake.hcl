@@ -1,3 +1,15 @@
+variable "IMAGE_NAME" {
+  default = "$IMAGE_NAME"
+}
+
+variable "REGISTRY" {
+  default = "$REGISTRY"
+}
+
+variable "REPOSITORY" {
+  default = "${REGISTRY}/${IMAGE_NAME}"
+}
+
 variable "COMMIT_SHA" {
   default = "$COMMIT_SHA"
 }
@@ -8,16 +20,17 @@ group "default" {
   ]
 }
 
+
 target "operator" {
   dockerfile = "Dockerfile"
   tags       = [
-    "${COMMIT_SHA}",
-    "latest"
+    "${REPOSITORY}:${COMMIT_SHA}",
+    "${REPOSITORY}:latest"
   ]
-  cache_to = [
+  cache-to = [
     "type=gha,mode=max"
   ]
-  cache_from = [
+  cache-from = [
     "type=gha"
   ]
 }

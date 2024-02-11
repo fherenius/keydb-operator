@@ -19,6 +19,8 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
+  # Commit SHA
+  COMMIT_SHA: ${{ github.sha }}
 
 
 jobs:
